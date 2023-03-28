@@ -121,8 +121,6 @@ function App() {
               >
                 <option value="">Select a proxy type</option>
                 <option value="http">HTTP</option>
-                <option value="https">HTTPS</option>
-                <option value="socks">SOCKS</option>
               </Form.Select>
             </Form.Group>
           </Col>
