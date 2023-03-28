@@ -15,7 +15,13 @@ function App() {
   });
 
   useEffect(() => {
-    getProxies();
+    const timer = setInterval(() => {
+      getProxies();
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   const getProxies = async () => {
@@ -134,7 +140,6 @@ function App() {
 type="file"
 name="filterFile"
 onChange={handleChange}
-required
 />
 </Form.Group>
 </Col>
@@ -144,28 +149,28 @@ required
     </Button>
   </Form>
 
-  <h2 className="my-4">Proxies</h2>
-  <Table striped bordered hover>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {proxies.map((proxy) => (
-        <tr key={proxy.name}>
-          <td>{proxy.name}</td>
-          <td>
-            <Button variant="danger" onClick={() => deleteProxy(proxy.name)}>
-              Delete
-            </Button>
-          </td>
+    <h2 className="my-4">Proxies</h2>
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Actions</th>
         </tr>
-      ))}
-    </tbody>
-  </Table>
-</Container>
+      </thead>
+      <tbody>
+        {proxies.map((proxy) => (
+          <tr key={proxy.name}>
+            <td>{proxy.name}</td>
+            <td>
+              <Button variant="danger" onClick={() => deleteProxy(proxy.name)}>
+                Delete
+              </Button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  </Container>
 );
 }
 export default App;
