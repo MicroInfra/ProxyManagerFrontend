@@ -158,7 +158,8 @@ onChange={handleChange}
         </tr>
       </thead>
       <tbody>
-        {proxies.map((proxy) => (
+        {console.log(proxies)}
+        {/* {proxies.forEach((proxy) => (
           <tr key={proxy.name}>
             <td>{proxy.name}</td>
             <td>
@@ -167,7 +168,7 @@ onChange={handleChange}
               </Button>
             </td>
           </tr>
-        ))}
+        ))} */}
       </tbody>
     </Table>
   </Container>
